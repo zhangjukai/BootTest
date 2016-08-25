@@ -15,6 +15,7 @@ public class Application {
     }
 	
 	public static void main(String[] args) {
+		//启动程序
 		SpringApplication.run(Application.class, args);
 	}
 }
