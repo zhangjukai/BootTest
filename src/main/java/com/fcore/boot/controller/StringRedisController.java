@@ -1,4 +1,4 @@
-package com.fcore.boot.controller;
+/*package com.fcore.boot.controller;
 
 import javax.annotation.Resource;
 
@@ -34,3 +34,4 @@ public class StringRedisController {
         return valOpsStr.get(key);  
     }  
 }  
+*/

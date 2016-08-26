@@ -1,4 +1,4 @@
-package com.fcore.boot.dao;
+/*package com.fcore.boot.dao;
 
 import javax.annotation.Resource;
 
@@ -25,4 +25,4 @@ public class PersonDao {
     public Person getPerson(String id){  
         return (Person) valOps.get(id);  
     }     
-}  
+}  */
