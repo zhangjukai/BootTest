@@ -41,4 +41,16 @@ public class TestPOJOTest {
 		pojo.setName("zzzz");
 		testServices.save(pojo);
 	}
+	
+	@Test
+	public void test(){
+		try {
+			log.info("执行try语句，下面进行抛出异常!");
+			throw new RuntimeException("编号已经存在");
+		} catch (Exception e) {
+			log.info("执行catch里面的代码！");
+			log.info(e.getMessage());
+		}
+		log.info("执行catch后面的代码！");
+	}
 }

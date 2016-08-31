@@ -1,6 +1,7 @@
 package com.fcore.boot;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.tomcat.jdbc.pool.DataSource;
@@ -62,7 +63,13 @@ public class Application {
 		pojo.setAge(100);
 		pojo.setName("zzzz");
 		testServices.save(pojo);*/
+    	logger.info("=================系统初始化===================");
     }
+    
+    @PreDestroy
+	public void  dostory(){
+    	logger.info("=================系统关闭注销===================");
+	}
     
 	public static void main(String[] args) {
 		//启动程序
