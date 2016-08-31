@@ -22,4 +22,8 @@ public class TestServices {
     public List<TestPOJO> showDao(int age){
         return testMapper.get(age);
     }
+    
+    public void save(TestPOJO pojo){
+    	testMapper.save(pojo);
+    }
 }

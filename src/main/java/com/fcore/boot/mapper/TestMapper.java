@@ -7,4 +7,6 @@ import com.fcore.boot.entity.TestPOJO;
 public interface TestMapper {
 	
 	public List<TestPOJO> get(Integer age);
+	
+	public void save(TestPOJO pojo);
 }

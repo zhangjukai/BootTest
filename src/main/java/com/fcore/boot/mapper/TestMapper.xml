@@ -23,4 +23,16 @@
         FROM testPOJO
         WHERE age = #{age}
     </select>
+    
+   <insert id="save" parameterType="com.fcore.boot.entity.TestPOJO">
+		<![CDATA[
+		INSERT INTO testPOJO(id,name,age) 
+		VALUES 
+		(#{id},#{name},#{age})
+		]]>
+		<selectKey resultType="long" keyProperty="id">
+			select @@IDENTITY as id
+		</selectKey>
+    </insert>
+    
 </mapper>

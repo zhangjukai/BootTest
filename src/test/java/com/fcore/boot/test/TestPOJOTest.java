@@ -33,4 +33,12 @@ public class TestPOJOTest {
 			log.info(pojo.toString());
 		}
 	}
+	
+	@Test
+	public void testSave(){
+		TestPOJO pojo = new TestPOJO();
+		pojo.setAge(100);
+		pojo.setName("zzzz");
+		testServices.save(pojo);
+	}
 }
