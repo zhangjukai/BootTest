@@ -52,13 +52,15 @@ public class ShiroConfig {
 		bean.setFilters(filters);
 		
 		Map<String, String> chains = new HashMap<String, String>();
+		chains.put("/index", "anon");
 		chains.put("/login", "anon");
 		chains.put("/unauthor", "anon");
 		chains.put("/logout", "logout");
 		chains.put("/base/**", "anon");
 		chains.put("/css/**", "anon");
 		chains.put("/layer/**", "anon");
-		chains.put("/**", "authc,perms");
+		chains.put("/webjars/**", "anon");
+		chains.put("/**", "authc");
 		bean.setFilterChainDefinitionMap(chains);
 		return bean;
 	}
@@ -103,10 +105,10 @@ public class ShiroConfig {
 		return userRealm;
 	}
 	
-	@Bean
+	@Bean(name = "cacheManager")  
 	public EhCacheManager cacheManager() {
 		EhCacheManager cacheManager = new EhCacheManager();
-		cacheManager.setCacheManagerConfigFile("classpath:ehcache.xml");
+		cacheManager.setCacheManagerConfigFile("classpath:shiro-ehcache.xml");
 		return cacheManager;
 	}
 	

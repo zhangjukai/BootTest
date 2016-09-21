@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>INDEX</title>
+<link th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
+	rel="stylesheet" media="screen"></link>
+<script type="text/javascript"
+	th:src="@{/webjars/jquery/2.1.1/jquery.min.js}"></script>
+<script type="text/javascript"
+	th:src="@{/webjars/bootstrap/3.2.0/js/bootstrap.min.js}"></script>
+</head>
+<body>
+	<h3 th:text="${message}">显示msg</h3>
+	<div class="row" style="margin: 30px;">
+		<h3>用户登录</h3>
+		<form action="/login" method="post">
+			<input type="text" name="loginName" value="" />
+			<input type="password" name="passWord" value="" />
+			<input type="submit" value="登录" />
+		</form>
+	</div>
+</body>
+</html>
