@@ -19,7 +19,6 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fcore.boot.entity.TestPOJO;
 import com.fcore.boot.service.TestServices;
 
 @SpringBootApplication
