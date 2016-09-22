@@ -1,6 +1,6 @@
 /*
-SQLyog Ultimate v11.24 (32 bit)
-MySQL - 5.7.13-log : Database - spring_boot
+SQLyog Ultimate v12.09 (64 bit)
+MySQL - 5.7.14-log : Database - spring_boot
 *********************************************************************
 */
 
@@ -88,9 +88,11 @@ CREATE TABLE `sys_user` (
   `updateTime` varchar(32) COLLATE utf8_bin DEFAULT NULL,
   `isDelete` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 /*Data for the table `sys_user` */
+
+insert  into `sys_user`(`id`,`userName`,`loginName`,`mobile`,`salt`,`password`,`lastLoginIp`,`lastLoginTime`,`createUserId`,`createTime`,`updateUserId`,`updateTime`,`isDelete`) values (1,'张居开','zjk',NULL,'b48690cd-78c8-4fcc-9df5-412308e607e0','a149a73da75fb4c9cfbd54ff2a1ea2d2',NULL,NULL,0,'2016-09-22 14:25:07',0,NULL,1),(2,'张居开','zjk',NULL,'768a4275-c5f8-4d1a-8b15-727a33f794d6','41c725b5a77263ffa19ac8b1d7615013',NULL,NULL,0,NULL,0,NULL,1),(3,'张居开','zjk',NULL,'b82d02fe-7100-467f-8354-eaa7fdd8a7df','74182f70d4b6c0f60e6164195205306a',NULL,NULL,0,NULL,0,NULL,1),(4,'张居开','zjk',NULL,'018ba40f-7dc4-47bf-8efd-4205a64c2b2b','2dd73ff1fa68c84fc266b4227009b53f',NULL,NULL,0,NULL,0,NULL,1),(5,'张居开','zjk',NULL,'0c8d3251-4e2f-43ad-8323-57aa86d7ae28','3bed467eb506a93bc4511e52d7e6b234',NULL,NULL,0,NULL,0,NULL,1);
 
 /*Table structure for table `sys_user_role` */
 
