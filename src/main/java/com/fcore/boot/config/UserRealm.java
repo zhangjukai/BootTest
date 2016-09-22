@@ -19,9 +19,11 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.ByteSource;
 import org.apache.shiro.web.util.SavedRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.fcore.boot.entity.SysUser;
+import com.fcore.boot.service.SysUserService;
 
 
 /**
@@ -32,6 +34,10 @@ import com.fcore.boot.entity.SysUser;
 @Component("userRealm")
 public class UserRealm extends AuthorizingRealm {
 
+	
+	@Autowired
+	private SysUserService userService; 
+	
 	public UserRealm() {
 		setName("UserRealm");
 		// 采用MD5加密
@@ -61,12 +67,15 @@ public class UserRealm extends AuthorizingRealm {
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
 		UsernamePasswordToken upt = (UsernamePasswordToken) token;
 		String loginName = upt.getUsername();
-		SysUser user = null;
+		SysUser user = userService.getUserByLoginName(loginName);
 
 		if (user == null) {
 			throw new UnknownAccountException();
 		}
-		SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, upt.getPassword(),ByteSource.Util.bytes(user.getSalt()), getName());
+		SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, user.getPassword(),ByteSource.Util.bytes(user.getSalt()), getName());
+		Subject currSubject =SecurityUtils.getSubject();
+		Session session = currSubject.getSession();
+		session.setAttribute("sessionUser", user);
 		return info;
 	}
 	
@@ -146,6 +155,6 @@ public class UserRealm extends AuthorizingRealm {
 	
 	public static void main(String[] args) {
 		UserRealm realm = new UserRealm();
-		System.out.println(realm.shiroMd5("123456@123","zhoujing",2));
+		System.out.println(realm.shiroMd5("123456","b48690cd-78c8-4fcc-9df5-412308e607e0",2));
 	}
 }
