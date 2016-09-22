@@ -39,8 +39,8 @@
 	      and loginName like CONCAT('%',#{loginName},'%')   
         </if>
     	order by id desc 
-    	<if test="currentPage!=null and currentPage>-1">
-    		limit #{currentPage},#{pageSize}
+    	<if test="pageSize!=null and pageSize>0 and pageNumber!=null and pageNumber>0">
+    		limit #{(pageNumber-1)*pageSize},#{pageSize}
     	</if>
     </select>
     <select id="getCount" parameterType="com.fcore.boot.entity.SysUser" resultType="int">

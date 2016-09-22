@@ -5,7 +5,7 @@ import org.apache.shiro.subject.Subject;
 
 import com.fcore.boot.entity.SysUser;
 
-public class BaseAction {
+public class BaseController {
 	public  SysUser getSessionUser(){
 		Subject subject = SecurityUtils.getSubject();
 		return (SysUser) subject.getSession().getAttribute("sessionUser");

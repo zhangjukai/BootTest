@@ -3,7 +3,7 @@ package com.fcore.boot.entity;
 import java.io.Serializable;
 
 
-public class SysUserRole implements Serializable {
+public class SysUserRole  implements Serializable {
 	/**
 	*@Fields sysUserId :用户ID
 	*/

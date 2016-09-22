@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping(value="/views")
-public class MainController extends BaseAction {
+public class MainController extends BaseController {
 	private static Logger logger = LoggerFactory.getLogger(MainController.class);
 	
 	@RequestMapping(value="/")

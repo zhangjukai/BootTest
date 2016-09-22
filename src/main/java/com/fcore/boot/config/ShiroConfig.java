@@ -1,7 +1,9 @@
 package com.fcore.boot.config;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.DispatcherType;
 import javax.servlet.Filter;
@@ -17,6 +19,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.web.filter.DelegatingFilterProxy;
+import org.thymeleaf.dialect.IDialect;
+import org.thymeleaf.spring4.SpringTemplateEngine;
+
+import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 
 @Configuration
 public class ShiroConfig {
@@ -58,10 +64,12 @@ public class ShiroConfig {
 		chains.put("/logout", "logout");
 		chains.put("/resource/**", "anon");
 		chains.put("/webjars/**", "anon");
-		/*chains.put("/**", "authc");*/
+		chains.put("/**", "authc");
 		bean.setFilterChainDefinitionMap(chains);
 		return bean;
 	}
+	
+	
 	
 	/**
 	 * @see org.apache.shiro.mgt.SecurityManager
@@ -114,4 +122,13 @@ public class ShiroConfig {
 	public LifecycleBeanPostProcessor lifecycleBeanPostProcessor() {
 		return new LifecycleBeanPostProcessor();
 	}
+	
+	 /**  
+	   * ShiroDialect，为了在thymeleaf里使用shiro的标签的bean  
+	   * @return  
+	   */  
+	  @Bean  
+	  public ShiroDialect shiroDialect(){  
+		  return new ShiroDialect();  
+	  }
 }
