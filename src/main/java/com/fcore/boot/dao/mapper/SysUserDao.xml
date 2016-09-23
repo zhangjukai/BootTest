@@ -40,7 +40,7 @@
         </if>
     	order by id desc 
     	<if test="pageSize!=null and pageSize>0 and pageNumber!=null and pageNumber>0">
-    		limit #{(pageNumber-1)*pageSize},#{pageSize}
+    		limit ${(pageNumber-1)*pageSize},#{pageSize}
     	</if>
     </select>
     <select id="getCount" parameterType="com.fcore.boot.entity.SysUser" resultType="int">

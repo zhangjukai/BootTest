@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
+import com.fcore.boot.bean.Pager;
+
 public interface BaseService<T, PK extends Serializable> {
 	void setBaseDao();
 	/**
@@ -43,4 +45,11 @@ public interface BaseService<T, PK extends Serializable> {
 	 * @return
 	 */
 	public int getCount(T t);
+	
+	/**
+	 * 分页查询
+	 * @param t
+	 * @return
+	 */
+	public Pager findForPager(T t);
 }

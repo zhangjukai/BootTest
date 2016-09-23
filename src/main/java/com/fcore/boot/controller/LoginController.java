@@ -10,6 +10,7 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,20 +18,28 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fcore.boot.bean.CommonConstants;
+import com.fcore.boot.entity.SysUser;
+import com.fcore.boot.service.SysUserService;
+import com.fcore.boot.utils.CommUtil;
+import com.fcore.boot.utils.DateTimeUtil;
 
 @Controller
-public class LoginController {
+public class LoginController extends BaseController {
 	private static Logger logger = LoggerFactory.getLogger(LoginController.class);
+	
+	@Autowired
+	private SysUserService userService; 
+
 	/**
 	 * Go login.jsp
 	 * @return
 	 */
-	@RequestMapping(value="login", method=RequestMethod.GET)
+	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public String login(@ModelAttribute("message") String message) {
-		System.out.println("message:"+message);
+		System.out.println("message:" + message);
 		return "login";
 	}
-	
+
 	/**
 	 * Go login
 	 * @param request
@@ -55,6 +64,12 @@ public class LoginController {
 		}
 		// 验证是否登录成功
 		if (subject.isAuthenticated()) {
+			
+			//更新用户登录记录
+			SysUser  user = this.getSessionUser();
+			user.setLastLoginTime(DateTimeUtil.getNowDateStr(DateTimeUtil.yyyy_MM_dd_HH_mm_ss));
+			user.setLastLoginIp(CommUtil.getIpAddr(request));
+			userService.update(user);
 			return "redirect:/views/";
 		} else {
 			upt.clear();
@@ -62,9 +77,10 @@ public class LoginController {
 		}
 
 	}
-	
+
 	/**
 	 * Exit
+	 * 
 	 * @return
 	 */
 	@RequestMapping("logout")

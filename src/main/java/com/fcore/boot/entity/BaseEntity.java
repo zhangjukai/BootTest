@@ -6,7 +6,7 @@ public class BaseEntity implements Serializable {
 	/**
 	*@Fields id :ID
 	*/
-	private long id;
+	private Long id;
 	/**
 	*@Fields createUserId :创建人ID
 	*/
@@ -32,11 +32,11 @@ public class BaseEntity implements Serializable {
 	
 	private int pageSize;
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

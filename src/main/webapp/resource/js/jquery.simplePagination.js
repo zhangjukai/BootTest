@@ -8,7 +8,6 @@
 * http://flaviusmatis.github.com/license.html
 */
 (function($){
-
 	var methods = {
 		init: function(options) {
 			var o = $.extend({

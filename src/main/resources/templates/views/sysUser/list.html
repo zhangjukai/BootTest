@@ -8,32 +8,8 @@
 <script type="text/javascript" th:src="@{/webjars/jquery/2.1.1/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/resource/js/jquery.simplePagination.js}"></script>
 <script type="text/javascript" th:src="@{/webjars/bootstrap/3.2.0/js/bootstrap.min.js}"></script>
-<script type="text/javascript">
-$(function(){
-	paginationFn(0,0,"light-pagination",searchForm);
-})
-/**
- * 调用分页方法
- * @param number 当前页
- * @param count  总条数
- * @param paginationDivID 分页divID
- * @param searchFormId 列表查询form标签ID
- * @param inputPageNumberName form中pageNumber的input标签的name
- */
-function paginationFn(number,count,paginationDivID){
-	if(count>0){
-		$('#'+paginationDivID).pagination({
-			pages: count,
-			cssStyle: 'light-theme',
-			currentPage:number,
-			onPageClick:function(pageNumber, event){
-				$("input[name='pageNumber']").val(pageNumber);
-				$('#searchForm').submit();
-			}
-		});	
-	}
-}
-</script>
+<script type="text/javascript" th:src="@{/resource/plugins/layer/layer.js}"></script>
+<script type="text/javascript" th:src="@{/resource/js/list.js}"></script>
 <style type="text/css">
 th{text-align: center;}
 </style>
@@ -41,16 +17,17 @@ th{text-align: center;}
 <body>
 	<div class="container-fluid" style="padding: 30px;">
 		<form id="searchForm" action="list" method="post" class="form-inline" >
-			<input type="hidden" value="" th:value="1" name="pageNumber" />
+			<input type="hidden" value="" th:value="${pager.pageNumber}" name="pageNumber" id="pageNumber"/>
+			<input type="hidden" value="" th:value="${pager.pageCount}" id="pageCount"/>
 			<div class="row" style="margin-bottom: 10px;">
 				<div class="col-md-12">
 					<label>用户名称：</label>
-					<input type="text" class="form-control lg-width" placeholder="输入关键字" name="userName" value="" />
+					<input type="text" class="form-control lg-width" placeholder="输入关键字" name="userName" value="" th:value="${user.userName}" />
 					&nbsp;&nbsp;
-					<label>所在城市：</label>
-					<input type="text" class="form-control lg-width" placeholder="输入关键字" name="lastAddress" value="" />
+					<label>登录名称：</label>
+					<input type="text" class="form-control lg-width" placeholder="输入关键字" name="loginName" value="" th:value="${user.loginName}"/>
 					<button type="submit" class="btn btn-info">查询</button>
-					<a class="btn btn-success" href="edit">添加</a>
+					<a class="btn btn-success" href="javascript:void(0)" onclick="addOrEdit()">添加</a>
 				</div>
 			</div>
 			<div class="row">
@@ -59,24 +36,27 @@ th{text-align: center;}
 				        <tr>
 					        <th>序号</th>
 							<th>用户名称</th>
-							<th>所在城市</th>
-							<th>发贴总数</th>
-							<th>回复总数</th>
-							<th>总积分</th>
-							<th>状态</th>
+							<th>登录名称</th>
+							<th>手机号码</th>
+							<th>最后登录IP</th>
+							<th>最后登录时间</th>
 				      		<th>操作</th>
 				        </tr>
 				    </thead>
-				    <tbody>
-				    	<tr>
-				    		<td>aaaaa</td>
-				    		<td>aaaaa</td>
-				    		<td>aaaaa</td>
-				    		<td>aaaaa</td>
-				    		<td>aaaaa</td>
-				    		<td>aaaaa</td>
-				    		<td>aaaaa</td>
-				    		<td>aaaaa</td>
+				    <tbody style="color: #666">
+				    	<tr th:each="obj:${pager.list}">
+				    		<td th:text="${objStat.count}">0</td>
+				    		<td th:text="${obj.userName}">userName</td>
+				    		<td th:text="${obj.loginName}">loginName</td>
+				    		<td th:text="${obj.mobile}">mobile</td>
+				    		<td th:text="${obj.lastLoginIp}">lastLoginIp</td>
+				    		<td th:text="${obj.lastLoginTime}">lastLoginTime</td>
+				    		<td>
+				    			<a class="btn btn-primary btn-xs" href="" role="button" title="编辑">编辑</a>
+				    		</td>
+				    	</tr>
+				    	<tr th:if="${pager.totalCount lt 1}">
+				    		<td colspan="7" class="text-center">暂无数据!!!</td>
 				    	</tr>
 				    </tbody>
 				 </table>

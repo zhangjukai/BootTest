@@ -1,6 +1,7 @@
 package com.fcore.boot.config;
 
 import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -76,6 +77,7 @@ public class UserRealm extends AuthorizingRealm {
 		Subject currSubject =SecurityUtils.getSubject();
 		Session session = currSubject.getSession();
 		session.setAttribute("sessionUser", user);
+		
 		return info;
 	}
 	
