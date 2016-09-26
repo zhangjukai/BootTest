@@ -19,8 +19,8 @@ html { overflow-x: hidden; overflow-y: auto; }
 <body>
 <div class="container-fluid" style="padding: 30px;">
 <form id="searchForm" action="list" method="post" class="form-inline" >
-<input type="hidden" value="" th:value="${pager.pageNumber}" name="pageNumber" id="pageNumber"/>
-<input type="hidden" value="" th:value="${pager.pageCount}" id="pageCount"/>
+<input type="hidden" value="" th:value="${r"$"}{pager.pageNumber}" name="pageNumber" id="pageNumber"/>
+<input type="hidden" value="" th:value="${r"$"}{pager.pageCount}" id="pageCount"/>
 <div class="row" style="margin-bottom: 10px;">
 	<div class="col-md-12">
 		<label></label>
@@ -33,43 +33,23 @@ html { overflow-x: hidden; overflow-y: auto; }
 <table class="table table-striped table-bordered text-center">
 	<thead>
         <tr>
-		<th>ID</th>
-		<th>用户名称</th>
-		<th>登录名称</th>
-		<th>手机号码</th>
-		<th>加密盐</th>
-		<th>登录秘密</th>
-		<th>最后登录IP</th>
-		<th>最后登录时间</th>
-		<th>创建人</th>
-		<th>创建时间</th>
-		<th>修改人</th>
-		<th>修改时间</th>
-		<th>删除标记</th>
+		<#list table.fieldNames as i>
+		<th>${table.remaks[i_index]}</th>
+        </#list>
       	<th>操作</th>
         </tr>
     </thead>
-     <tr th:each="obj:${pager.list}">
-			<td th:text="${obj.id}">id</td>
-			<td th:text="${obj.userName}">userName</td>
-			<td th:text="${obj.loginName}">loginName</td>
-			<td th:text="${obj.mobile}">mobile</td>
-			<td th:text="${obj.salt}">salt</td>
-			<td th:text="${obj.password}">password</td>
-			<td th:text="${obj.lastLoginIp}">lastLoginIp</td>
-			<td th:text="${obj.lastLoginTime}">lastLoginTime</td>
-			<td th:text="${obj.createUserId}">createUserId</td>
-			<td th:text="${obj.createTime}">createTime</td>
-			<td th:text="${obj.updateUserId}">updateUserId</td>
-			<td th:text="${obj.updateTime}">updateTime</td>
-			<td th:text="${obj.isDelete}">isDelete</td>
+     <tr th:each="obj:${r"$"}{pager.list}">
+		<#list table.fieldNames as i>
+			<td th:text="${r"$"}{obj.${table.fieldNames[i_index]}}">${table.fieldNames[i_index]}</td>
+		</#list>
 		 <td >
-	  		<a class="btn btn-primary btn-xs"  href="javascript:void(0)" onclick="addOrEdit(${obj.id)" role="button" title="编辑">编辑</a>
-	  	    <a class="btn btn-primary btn-xs"  href="javascript:del('${obj.id }');" role="button" title="删除">删除</a>		         	   
+	  		<a class="btn btn-primary btn-xs"  href="javascript:void(0)" onclick="addOrEdit(${r"$"}{obj.${table.primary_colmun?if_exists})" role="button" title="编辑">编辑</a>
+	  	    <a class="btn btn-primary btn-xs"  href="javascript:del('${r"$"}{obj.${table.primary_colmun} }');" role="button" title="删除">删除</a>		         	   
 	     </td>
 	</tr>
-     <tr th:if="${pager.totalCount lt 1}">
-		<td colspan="14" class="text-center">暂无数据!!!</td>
+     <tr th:if="${r"$"}{pager.totalCount lt 1}">
+		<td colspan="${table.fieldNames?size+1}" class="text-center">暂无数据!!!</td>
 	 </tr>
 </table>
 </div>

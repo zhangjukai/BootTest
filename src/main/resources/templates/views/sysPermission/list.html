@@ -34,42 +34,44 @@ html { overflow-x: hidden; overflow-y: auto; }
 	<thead>
         <tr>
 		<th>ID</th>
-		<th>用户名称</th>
-		<th>登录名称</th>
-		<th>手机号码</th>
-		<th>加密盐</th>
-		<th>登录秘密</th>
-		<th>最后登录IP</th>
-		<th>最后登录时间</th>
+		<th>权限名称</th>
+		<th>权限值</th>
+		<th>URL</th>
+		<th>父ID</th>
+		<th>父ID集合</th>
+		<th>最后一级</th>
 		<th>创建人</th>
 		<th>创建时间</th>
-		<th>修改人</th>
-		<th>修改时间</th>
+		<th>更新人</th>
+		<th>更新时间</th>
 		<th>删除标记</th>
+		<th>层级编号</th>
+		<th>排序编号</th>
       	<th>操作</th>
         </tr>
     </thead>
      <tr th:each="obj:${pager.list}">
 			<td th:text="${obj.id}">id</td>
-			<td th:text="${obj.userName}">userName</td>
-			<td th:text="${obj.loginName}">loginName</td>
-			<td th:text="${obj.mobile}">mobile</td>
-			<td th:text="${obj.salt}">salt</td>
-			<td th:text="${obj.password}">password</td>
-			<td th:text="${obj.lastLoginIp}">lastLoginIp</td>
-			<td th:text="${obj.lastLoginTime}">lastLoginTime</td>
+			<td th:text="${obj.name}">name</td>
+			<td th:text="${obj.value}">value</td>
+			<td th:text="${obj.href}">href</td>
+			<td th:text="${obj.parentId}">parentId</td>
+			<td th:text="${obj.parentIds}">parentIds</td>
+			<td th:text="${obj.isLast}">isLast</td>
 			<td th:text="${obj.createUserId}">createUserId</td>
 			<td th:text="${obj.createTime}">createTime</td>
 			<td th:text="${obj.updateUserId}">updateUserId</td>
 			<td th:text="${obj.updateTime}">updateTime</td>
 			<td th:text="${obj.isDelete}">isDelete</td>
+			<td th:text="${obj.levelCode}">levelCode</td>
+			<td th:text="${obj.orderCode}">orderCode</td>
 		 <td >
 	  		<a class="btn btn-primary btn-xs"  href="javascript:void(0)" onclick="addOrEdit(${obj.id)" role="button" title="编辑">编辑</a>
 	  	    <a class="btn btn-primary btn-xs"  href="javascript:del('${obj.id }');" role="button" title="删除">删除</a>		         	   
 	     </td>
 	</tr>
      <tr th:if="${pager.totalCount lt 1}">
-		<td colspan="14" class="text-center">暂无数据!!!</td>
+		<td colspan="15" class="text-center">暂无数据!!!</td>
 	 </tr>
 </table>
 </div>

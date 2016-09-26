@@ -12,8 +12,17 @@ import com.fcore.boot.dao.SysUserDao;
 import com.fcore.boot.entity.SysUser;
 import com.fcore.boot.service.SysUserService;
 
-@Service
-public class SysUserServiceImp extends BaseServiceImpl<SysUser, Long> implements SysUserService {
+ /**   
+* @Title: SysUserServiceImpl.java 
+* @Package com.fcore.boot.service
+* @Description: 
+* @author zhangjukai
+* @date 2016-09-26 16:16:52
+* @version V1.0   
+* create by codeFactory
+*/
+@Service("SysUserServiceImpl")
+public class SysUserServiceImpl  extends BaseServiceImpl<SysUser,Long> implements SysUserService{
 
 	@Autowired
 	private SysUserDao userDao;
@@ -50,4 +59,5 @@ public class SysUserServiceImp extends BaseServiceImpl<SysUser, Long> implements
 		pager.setTotalCount(count);
 		return pager;
 	}
+	
 }

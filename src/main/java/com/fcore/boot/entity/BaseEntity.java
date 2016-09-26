@@ -10,7 +10,7 @@ public class BaseEntity implements Serializable {
 	/**
 	*@Fields createUserId :创建人ID
 	*/
-	private long createUserId;
+	private Long createUserId;
 	/**
 	*@Fields createTime :创建时间
 	*/
@@ -18,7 +18,7 @@ public class BaseEntity implements Serializable {
 	/**
 	*@Fields updateUserId :修改人ID
 	*/
-	private long updateUserId;
+	private Long updateUserId;
 	/**
 	*@Fields updateTime :修改时间
 	*/
@@ -26,11 +26,29 @@ public class BaseEntity implements Serializable {
 	/**
 	*@Fields isDelete :删除状态 2：删除 1：正常
 	*/
-	private int isDelete;
+	private Integer isDelete;
 	
 	private int pageNumber;
 	
 	private int pageSize;
+	
+	public Long getCreateUserId() {
+		return createUserId;
+	}
+
+	public void setCreateUserId(Long createUserId) {
+		this.createUserId = createUserId;
+	}
+
+	public Integer getIsDelete() {
+		return isDelete;
+	}
+
+	public void setIsDelete(Integer isDelete) {
+		this.isDelete = isDelete;
+	}
+
+	
 
 	public Long getId() {
 		return id;
@@ -38,14 +56,6 @@ public class BaseEntity implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public long getCreateUserId() {
-		return createUserId;
-	}
-
-	public void setCreateUserId(long createUserId) {
-		this.createUserId = createUserId;
 	}
 
 	public String getCreateTime() {
@@ -56,11 +66,11 @@ public class BaseEntity implements Serializable {
 		this.createTime = createTime;
 	}
 
-	public long getUpdateUserId() {
+	public Long getUpdateUserId() {
 		return updateUserId;
 	}
 
-	public void setUpdateUserId(long updateUserId) {
+	public void setUpdateUserId(Long updateUserId) {
 		this.updateUserId = updateUserId;
 	}
 
@@ -72,13 +82,7 @@ public class BaseEntity implements Serializable {
 		this.updateTime = updateTime;
 	}
 
-	public int getIsDelete() {
-		return isDelete;
-	}
-
-	public void setIsDelete(int isDelete) {
-		this.isDelete = isDelete;
-	}
+	
 
 	public int getPageNumber() {
 		return pageNumber;

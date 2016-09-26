@@ -34,13 +34,8 @@ html { overflow-x: hidden; overflow-y: auto; }
 	<thead>
         <tr>
 		<th>ID</th>
-		<th>用户名称</th>
-		<th>登录名称</th>
-		<th>手机号码</th>
-		<th>加密盐</th>
-		<th>登录秘密</th>
-		<th>最后登录IP</th>
-		<th>最后登录时间</th>
+		<th>角色名称</th>
+		<th>角色描述</th>
 		<th>创建人</th>
 		<th>创建时间</th>
 		<th>修改人</th>
@@ -51,13 +46,8 @@ html { overflow-x: hidden; overflow-y: auto; }
     </thead>
      <tr th:each="obj:${pager.list}">
 			<td th:text="${obj.id}">id</td>
-			<td th:text="${obj.userName}">userName</td>
-			<td th:text="${obj.loginName}">loginName</td>
-			<td th:text="${obj.mobile}">mobile</td>
-			<td th:text="${obj.salt}">salt</td>
-			<td th:text="${obj.password}">password</td>
-			<td th:text="${obj.lastLoginIp}">lastLoginIp</td>
-			<td th:text="${obj.lastLoginTime}">lastLoginTime</td>
+			<td th:text="${obj.roleName}">roleName</td>
+			<td th:text="${obj.description}">description</td>
 			<td th:text="${obj.createUserId}">createUserId</td>
 			<td th:text="${obj.createTime}">createTime</td>
 			<td th:text="${obj.updateUserId}">updateUserId</td>
@@ -69,7 +59,7 @@ html { overflow-x: hidden; overflow-y: auto; }
 	     </td>
 	</tr>
      <tr th:if="${pager.totalCount lt 1}">
-		<td colspan="14" class="text-center">暂无数据!!!</td>
+		<td colspan="9" class="text-center">暂无数据!!!</td>
 	 </tr>
 </table>
 </div>

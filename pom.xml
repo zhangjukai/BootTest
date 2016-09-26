@@ -92,8 +92,12 @@
 	        <artifactId>thymeleaf-extras-shiro</artifactId>
 	        <version>1.2.1</version>
 	    </dependency>
+	    <dependency>
+	      <groupId>fcoreCodeGenerate</groupId>
+	      <artifactId>fcore.code.generate</artifactId>
+	      <version>0.0.1-SNAPSHOT</version>
+   	 	</dependency> 
   </dependencies>
-  
   
   <build>
     <finalName>BootTest</finalName>
