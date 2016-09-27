@@ -1,4 +1,4 @@
-/*package com.fcore.boot.dao;
+package com.fcore.boot.dao;
 
 import javax.annotation.Resource;
 
@@ -7,10 +7,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Repository;
 
-import com.fcore.boot.entity.Person;
-
 @Repository  
-public class PersonDao {  
+public class RedisDao {  
   
     @Autowired  
     RedisTemplate<Object,Object> redisTemplate;  
@@ -18,11 +16,11 @@ public class PersonDao {
     @Resource(name="redisTemplate")  
     ValueOperations<Object,Object> valOps;  
       
-    public void save(Person person){  
-        valOps.set(person.getId(), person);  
+    public void setValue(Object key,Object value){  
+        valOps.set(key, value);
     }  
       
-    public Person getPerson(String id){  
-        return (Person) valOps.get(id);  
+    public Object getValue(String id){  
+        return valOps.get(id);  
     }     
-}  */
+}  
