@@ -1,9 +1,7 @@
 package com.fcore.boot.config;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 import javax.servlet.DispatcherType;
 import javax.servlet.Filter;
@@ -14,13 +12,11 @@ import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.filter.authc.AnonymousFilter;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
-import org.springframework.boot.context.embedded.FilterRegistrationBean;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.web.filter.DelegatingFilterProxy;
-import org.thymeleaf.dialect.IDialect;
-import org.thymeleaf.spring4.SpringTemplateEngine;
 
 import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 

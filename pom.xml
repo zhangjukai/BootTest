@@ -92,6 +92,11 @@
 	        <artifactId>thymeleaf-extras-shiro</artifactId>
 	        <version>1.2.1</version>
 	    </dependency>
+		<dependency>
+		    <groupId>com.alibaba</groupId>
+		    <artifactId>druid</artifactId>
+		    <version>1.0.26</version>
+		</dependency>
 	    <dependency>
 	      <groupId>fcoreCodeGenerate</groupId>
 	      <artifactId>fcore.code.generate</artifactId>
