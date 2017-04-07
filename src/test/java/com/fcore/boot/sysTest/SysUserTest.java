@@ -1,8 +1,12 @@
-package com.fcore.boot.sysTest;
+/*package com.fcore.boot.sysTest;
 
 import static org.junit.Assert.*;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -14,9 +18,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.fcore.boot.config.UserRealm;
 import com.fcore.boot.entity.SysUser;
 import com.fcore.boot.service.SysUserService;
+import com.fcore.boot.service.UserRealm;
 import com.fcore.boot.utils.DateTimeUtil;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -61,4 +65,31 @@ public class SysUserTest {
 		sysUser = userService.getById(1l);
 		assertEquals(sysUser.getCreateTime(),createTime);
 	}
+	
+	public static String matcherStr(String str, Map<String, String> param) {
+		StringBuffer sb = new StringBuffer();
+		String regex = "\\$\\{(.+?)\\}";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(str);
+		while (matcher.find()) {
+			String name = matcher.group(1);// 键名
+			String value = (String) param.get(name);// 键值
+			if (value == null) {
+				value = "";
+			}
+			matcher.appendReplacement(sb, value);
+		}
+		matcher.appendTail(sb);
+		return sb.toString();
+	}
+	
+	public static void main(String[] args) {
+        String str = "您收到来自${role}的工单${num}等待处理，查看${url}";
+        Map<String, String> param = new HashMap<String, String>();
+        param.put("role", "客户经理");
+        param.put("num", "100001");
+        param.put("url", "https://www.baidu.com");
+        System.out.println(matcherStr(str, param));
+    }
 }
+*/

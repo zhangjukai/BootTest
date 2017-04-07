@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fcore.boot.bean.Pager;
-import com.fcore.boot.dao.SysUserRoleDao;
+import com.fcore.boot.domain.SysUserRoleDao;
 import com.fcore.boot.entity.SysUserRole;
 import com.fcore.boot.service.SysUserRoleService;
 

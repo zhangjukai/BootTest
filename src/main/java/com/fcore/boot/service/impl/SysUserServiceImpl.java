@@ -6,9 +6,10 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.fcore.boot.bean.Pager;
-import com.fcore.boot.dao.SysUserDao;
+import com.fcore.boot.domain.SysUserDao;
 import com.fcore.boot.entity.SysUser;
 import com.fcore.boot.service.SysUserService;
 
@@ -22,6 +23,7 @@ import com.fcore.boot.service.SysUserService;
 * create by codeFactory
 */
 @Service("SysUserServiceImpl")
+@Transactional
 public class SysUserServiceImpl  extends BaseServiceImpl<SysUser,Long> implements SysUserService{
 
 	@Autowired

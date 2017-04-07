@@ -60,7 +60,7 @@ public class ShiroConfig {
 		chains.put("/logout", "logout");
 		chains.put("/resource/**", "anon");
 		chains.put("/webjars/**", "anon");
-		chains.put("/**", "authc");
+		//chains.put("/**", "authc");
 		bean.setFilterChainDefinitionMap(chains);
 		return bean;
 	}

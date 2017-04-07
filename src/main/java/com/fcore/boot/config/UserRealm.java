@@ -153,9 +153,4 @@ public class UserRealm extends AuthorizingRealm {
 	    }  
 	    return savedRequest;  
 	}  
-	
-	public static void main(String[] args) {
-		UserRealm realm = new UserRealm();
-		System.out.println(realm.shiroMd5("123456","b48690cd-78c8-4fcc-9df5-412308e607e0",2));
-	}
 }

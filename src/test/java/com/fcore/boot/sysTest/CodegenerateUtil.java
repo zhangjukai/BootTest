@@ -1,4 +1,4 @@
-package com.fcore.boot.sysTest;
+/*package com.fcore.boot.sysTest;
 
 import com.fcore.entity.DbEntity;
 import com.fcore.entity.FileEntity;
@@ -11,14 +11,14 @@ public class CodegenerateUtil {
 		codeRun("sys_role", "zhangjukai", false, "127.0.0.1","spring_boot","root","123456");
 	}
 
-	/**
+	*//**
 	 * 生成器方法入口
 	 * @param tablename 表名
 	 * @param author  作者
 	 * @param isCover 是否覆盖之前的文件
 	 * @param ip 数据库ip
 	 * @param dbname  数据库名 方法中有数据库账号／密码／数据库端口，需要调整请修改
-	 */
+	 *//*
 	private static void codeRun(String tablename, String author,
 			boolean isCover, String ip, String dbname,String username,String pwd) {
 		String basePackage = "com.fcore.boot";
@@ -55,3 +55,4 @@ public class CodegenerateUtil {
 	}
 
 }
+*/

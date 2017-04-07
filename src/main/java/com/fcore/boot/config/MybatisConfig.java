@@ -26,7 +26,7 @@ public class MybatisConfig {
 
 		PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 
-		sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:/com/fcore/boot/dao/mapper/*.xml"));
+		sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:/com/fcore/boot/domain/*.xml"));
 
 		return sqlSessionFactoryBean.getObject();
 	}

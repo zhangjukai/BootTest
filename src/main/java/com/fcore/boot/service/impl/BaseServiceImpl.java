@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-import com.fcore.boot.dao.BaseDao;
+import com.fcore.boot.domain.BaseDao;
 import com.fcore.boot.service.BaseService;
 
 public abstract class BaseServiceImpl<T, PK extends Serializable> implements BaseService<T, PK> {
